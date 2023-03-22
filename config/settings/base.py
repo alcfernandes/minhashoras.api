@@ -14,9 +14,11 @@ import environ
 
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
-
 ROOT_DIR = (environ.Path(__file__) - 3)  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+if READ_DOT_ENV_FILE:
+    # OS environment variables take precedence over variables from .env
+    env.read_env(str(ROOT_DIR.path(".env")))
 
 APPS_DIR = ROOT_DIR.path("minhashoras_apps")
 
@@ -72,13 +74,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': f'{str(ROOT_DIR)}/db.sqlite3'
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST': env('POSTGRES_HOST'),
+        'PORT': env('POSTGRES_PORT'),
     }
 }
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Password validation
