@@ -1,0 +1,6 @@
+site_name: MinhasHoras
+nav:
+    - Home: index.md
+    - Glossário: glossario.md
+theme: material
+
