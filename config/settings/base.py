@@ -15,7 +15,7 @@ import environ
 env = environ.Env()
 
 ROOT_DIR = (environ.Path(__file__) - 3)  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(ROOT_DIR.path(".env")))
@@ -34,6 +34,8 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',              # necessário para o django-admin-interface
+    'colorfield',                   # necessário para o django-admin-interface
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# Solicitado na documentação de instalação do django-admin-interface
+# Need if wants use modals instead of popup windows
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,11 +124,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATIC_ROOT = str(ROOT_DIR("staticfiles"))
+STATIC_URL = "/django_static/"
+STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
