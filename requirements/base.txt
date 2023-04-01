@@ -9,3 +9,4 @@ django-admin-interface==0.24.2  # a modern responsive flat admin interface custo
 djangorestframework==3.14.0     # Web APIs for Django
 markdown==3.3.7                 # Markdown support for Python (for the browsable API.)
 django-filter==23.1             # A reusable Django application for allowing users to filter querysets dynamically
+drf-spectacular==0.26.1         # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
