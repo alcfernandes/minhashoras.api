@@ -1,7 +1,7 @@
 # Glossário
 
-## Termo A
-Definição do Termo A.
+## User
+Any person who uses the system.
 
 ## Termo B
 Definição do Termo B.
