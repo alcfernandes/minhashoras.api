@@ -19,3 +19,6 @@ freezegun==1.2.2                    # Mocks datetime.now().
 # Linting
 blue==0.9.1                         # Python linter.
 isort==5.12.0                       # Sorts imports.
+
+# Automation
+taskipy==1.10.4                     # Run tasks from your package.json.
