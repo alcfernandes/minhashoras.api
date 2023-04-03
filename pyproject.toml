@@ -4,3 +4,9 @@ docs = "mkdocs serve"
 pre_test = "task lint"
 test = "pytest -s -x --cov=minhashoras_apps -vv"
 post_test = "coverage html"
+
+
+[tool.isort]
+profile = "black"
+line_length = 79
+skip="migrations"
