@@ -5,6 +5,8 @@ pre_test = "task lint"
 test = "pytest -s -x --cov=minhashoras_apps -vv"
 post_test = "coverage html"
 
+[tool.blue]
+exclude="igrations"
 
 [tool.isort]
 profile = "black"
