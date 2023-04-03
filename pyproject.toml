@@ -12,3 +12,9 @@ exclude="igrations"
 profile = "black"
 line_length = 79
 skip="migrations"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+addopts = "--ds=config.settings.test --reuse-db --color=yes --tb=long --maxfail=1 --cov-report=html --cov=minhashoras_apps --no-cov-on-fail"
+python_files = "tests.py test_*.py"
+junit_suite_name = "minhas_horas_api"
