@@ -12,6 +12,7 @@ pytest==7.2.2                       # Python testing tool.
 pytest-django==4.5.2                # Pytest plugin for Django.
 pytest-cov==4.0.0                   # Pytest plugin for coverage.
 pytest-factoryboy==2.5.1            # Pytest plugin for factoryboy.
+pytest-sugar==0.9.6                 # Changes the default look and feel of pytest. Shows a progress bar.
 Faker==18.3.2                       # Generates fake data.
 freezegun==1.2.2                    # Mocks datetime.now().
 
