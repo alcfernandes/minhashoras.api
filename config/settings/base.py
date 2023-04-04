@@ -14,28 +14,30 @@ import environ
 
 env = environ.Env()
 
-ROOT_DIR = (environ.Path(__file__) - 3)  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=True)
+ROOT_DIR = (
+    environ.Path(__file__) - 3
+)  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
+READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(ROOT_DIR.path(".env")))
+    env.read_env(str(ROOT_DIR.path('.env')))
 
-APPS_DIR = ROOT_DIR.path("minhashoras_apps")
+APPS_DIR = ROOT_DIR.path('minhashoras_apps')
 
 SECRET_KEY = env(
-    "DJANGO_SECRET_KEY",
-    default="django-insecure-z6tqvc@^8f1zyp)fy@@*isxrbq2_(gb8999hz%(h4th+zdz8*n",
+    'DJANGO_SECRET_KEY',
+    default='django-insecure-z6tqvc@^8f1zyp)fy@@*isxrbq2_(gb8999hz%(h4th+zdz8*n',
 )
 
-DEBUG = env.bool("DJANGO_DEBUG", False)
+DEBUG = env.bool('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_interface',              # necessário para o django-admin-interface
-    'colorfield',                   # necessário para o django-admin-interface
+    'admin_interface',  # necessário para o django-admin-interface
+    'colorfield',  # necessário para o django-admin-interface
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,14 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'drf_spectacular',              # swagger docs
+    'drf_spectacular',  # swagger docs
+    'auditlog',
     'minhashoras_apps.accounts.apps.AccountsConfig',
 ]
 
 # Solicitado na documentação de instalação do django-admin-interface
 # Need if wants use modals instead of popup windows
-X_FRAME_OPTIONS = "SAMEORIGIN"
-SILENCED_SYSTEM_CHECKS = ["security.W019"]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'auditlog.middleware.AuditlogMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -85,7 +89,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {
-    "default": {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('POSTGRES_DB'),
         'USER': env('POSTGRES_USER'),
@@ -94,7 +98,7 @@ DATABASES = {
         'PORT': env('POSTGRES_PORT'),
     }
 }
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # Internationalization
@@ -102,7 +106,7 @@ DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = "America/Sao_Paulo"
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -110,12 +114,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-STATIC_ROOT = str(ROOT_DIR("staticfiles"))
-STATIC_URL = "/django_static/"
-STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
+STATIC_ROOT = str(ROOT_DIR('staticfiles'))
+STATIC_URL = '/django_static/'
+STATICFILES_DIRS = [str(APPS_DIR.path('static'))]
 STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 
@@ -158,3 +162,7 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '0.1.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+# Auditlog settings
+# ------------------------------------------------------------------------------
+AUDITLOG_INCLUDE_ALL_MODELS = True
