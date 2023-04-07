@@ -4,3 +4,6 @@
 
 # Database
 psycopg2==2.9.5 --no-binary psycopg2
+
+# Production web server
+gunicorn==20.1.0
