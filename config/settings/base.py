@@ -14,9 +14,11 @@ import environ
 
 env = environ.Env()
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 ROOT_DIR = (
     environ.Path(__file__) - 3
 )  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
+
 READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=True)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
@@ -28,10 +30,8 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['*'])
 
 # Application definition
-
 INSTALLED_APPS = [
     'admin_interface',  # necessário para o django-admin-interface
     'colorfield',  # necessário para o django-admin-interface
