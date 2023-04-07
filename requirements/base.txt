@@ -14,3 +14,7 @@ drf-spectacular==0.26.1         # Auto-generate OpenAPI 3.0 schemas from Django 
 # Data Auditing
 # ------------------------------------------------------------------------------
 django-auditlog==2.2.2          # Audit log for Django
+
+# Storage
+# ------------------------------------------------------------------------------
+django-storages[boto3]==1.13.2  # Custom storage backends for Django

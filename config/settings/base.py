@@ -109,20 +109,58 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+# STATIC FILES (CSS, JavaScript, Images)
+# ------------------------------------------------------------------------------
 STATIC_ROOT = str(ROOT_DIR('staticfiles'))
-STATIC_URL = '/django_static/'
 STATICFILES_DIRS = [str(APPS_DIR.path('static'))]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+# Usar ou não o S3
+USE_S3 = env.bool('USE_S3', default=False)
+
+if USE_S3:
+    # STORAGES
+    # ------------------------
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+    AWS_QUERYSTRING_AUTH = False
+
+    _AWS_EXPIRY = (
+        60 * 60 * 24 * 7
+    )  # DO NOT change these unless you know what you're doing.
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': f'max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate'
+    }
+    AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME', default=None)
+    AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN', default=None)
+    aws_s3_domain = (
+        AWS_S3_CUSTOM_DOMAIN or f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    )
+
+    # STATIC
+    # ------------------------
+    STATICFILES_STORAGE = (
+        'minhashoras_apps.utils.storages.StaticRootS3Boto3Storage'
+    )
+    COLLECTFAST_STRATEGY = 'collectfast.strategies.boto3.Boto3Strategy'
+    STATIC_URL = f'https://{aws_s3_domain}/static/'
+
+    # MEDIA
+    # ------------------------
+    DEFAULT_FILE_STORAGE = (
+        'minhas_horas_apps.utils.storages.MediaRootS3Boto3Storage'
+    )
+    MEDIA_URL = f'https://{aws_s3_domain}/media/'
+else:
+    STATIC_URL = '/django_static/'
+    MEDIA_URL = '/django_media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AUTHENTICATION
@@ -130,8 +168,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.User'
 
 # Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -163,7 +199,6 @@ SPECTACULAR_SETTINGS = {
 # Auditlog settings
 # ------------------------------------------------------------------------------
 AUDITLOG_INCLUDE_ALL_MODELS = True
-
 
 # LOGGING
 # ------------------------------------------------------------------------------
