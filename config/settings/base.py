@@ -24,10 +24,7 @@ if READ_DOT_ENV_FILE:
 
 APPS_DIR = ROOT_DIR.path('minhashoras_apps')
 
-SECRET_KEY = env(
-    'DJANGO_SECRET_KEY',
-    default='django-insecure-z6tqvc@^8f1zyp)fy@@*isxrbq2_(gb8999hz%(h4th+zdz8*n',
-)
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
