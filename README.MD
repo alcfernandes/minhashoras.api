@@ -58,7 +58,7 @@ python manage.py runserver
 The API should now be running on `http://127.0.0.1:8000/`.
 
 ## Usage
-Please refer to the API documentation (available at `/docs` when running the development server) for detailed information on how to use the TimeTrackingAPI, including available endpoints and required parameters.
+Please refer to the API documentation (available at `/api/schema/swagger-ui/` when running the development server) for detailed information on how to use the Minhashoras API, including available endpoints and required parameters.
 
 ## Contributing
 We welcome contributions from the community! Please feel free to submit issues, feature requests, or pull requests to help improve the TimeTrackingAPI.
