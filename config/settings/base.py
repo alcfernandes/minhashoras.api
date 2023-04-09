@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',  # swagger docs
     'auditlog',
+    'storages',
     'minhashoras_apps.accounts.apps.AccountsConfig',
 ]
 
