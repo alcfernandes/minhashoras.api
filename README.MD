@@ -1,4 +1,5 @@
 # Minhashoras.API
+[![Maintainability](https://api.codeclimate.com/v1/badges/63de08d06582d8cb4ca5/maintainability)](https://codeclimate.com/github/alcfernandes/minhashoras.api/maintainability)
 
 Minhashoras.API is a Python API built using the Django framework, designed to help track the time spent on clients, projects, and tasks. This open-source project aims to provide an easy-to-use solution for managing time in a flexible and efficient manner. Users can register clients, projects, tasks, and log the time spent on each activity. It also allows generating reports on the total time spent per client, project, task, etc.
 
