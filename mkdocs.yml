@@ -1,7 +1,0 @@
-site_name: MinhasHoras
-nav:
-    - Home: index.md
-    - Glossário: glossario.md
-theme:
-    name: material
-    language: pt-BR

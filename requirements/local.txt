@@ -3,10 +3,6 @@
 # Database
 psycopg2-binary==2.9.5
 
-# Documentation
-mkdocs==1.4.2                       # Project documentation with Markdown.
-mkdocs-material==9.1.3              # Material theme for MkDocs.
-
 # Testing
 pytest==7.2.2                       # Python testing tool.
 pytest-django==4.5.2                # Pytest plugin for Django.
