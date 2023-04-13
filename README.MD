@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/63de08d06582d8cb4ca5/maintainability)](https://codeclimate.com/github/alcfernandes/minhashoras.api/maintainability)
 
 Project documentation available at
-[MinhasHoras.docs](https://github.com/alcfernandes/minhashoras.docs).
+[MinhasHoras.docs](https://minhashoras.readthedocs.io).
 
 MinhasHoras.API is a Python API built using the Django framework, designed to help track the time spent on clients, 
 projects, and tasks. This API will serve a web client that aims to provide a simple solution for managing time where 
