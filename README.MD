@@ -1,4 +1,5 @@
 # MinhasHoras.API
+[![Documentation Status](https://readthedocs.org/projects/minhashoras/badge/?version=latest)](https://minhashoras.readthedocs.io/en/latest/?badge=latest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/63de08d06582d8cb4ca5/maintainability)](https://codeclimate.com/github/alcfernandes/minhashoras.api/maintainability)
 
 Project documentation available at
