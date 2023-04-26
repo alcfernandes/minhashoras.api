@@ -1,20 +1,21 @@
 # Django
 # ------------------------------------------------------------------------------
 django==4.1.7
-django-environ==0.10.0          # configure your Django application with environment variables
-django-admin-interface==0.24.2  # a modern responsive flat admin interface customizable by the admin itself
+django-environ==0.10.0                  # configure your Django application with environment variables
+django-admin-interface==0.24.2          # a modern responsive flat admin interface customizable by the admin itself
 
 # Django Rest Framework dependencies
 # ------------------------------------------------------------------------------
-djangorestframework==3.14.0     # Web APIs for Django
-markdown==3.3.7                 # Markdown support for Python (for the browsable API.)
-django-filter==23.1             # A reusable Django application for allowing users to filter querysets dynamically
-drf-spectacular==0.26.1         # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
+djangorestframework==3.14.0             # Web APIs for Django
+markdown==3.3.7                         # Markdown support for Python (for the browsable API.)
+django-filter==23.1                     # A reusable Django application for allowing users to filter querysets dynamically
+drf-spectacular==0.26.1                 # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
+djangorestframework-simplejwt==5.2.2    # JSON Web Token authentication for Django REST framework
 
 # Data Auditing
 # ------------------------------------------------------------------------------
-django-auditlog==2.2.2          # Audit log for Django
+django-auditlog==2.2.2                  # Audit log for Django
 
 # Storage
 # ------------------------------------------------------------------------------
-django-storages[boto3]==1.13.2  # Custom storage backends for Django
+django-storages[boto3]==1.13.2          # Custom storage backends for Django
