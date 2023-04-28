@@ -7,7 +7,6 @@ ALLOWED_HOSTS = env.list(
         'minhashoras-api.fly.dev',
         'localhost',
         '127.0.0.1',
-        '.vercel.app',
     ],
 )
 CSRF_TRUSTED_ORIGINS = env.list(
