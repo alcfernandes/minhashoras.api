@@ -20,3 +20,7 @@ django-auditlog==2.2.2                  # Audit log for Django
 # Storage
 # ------------------------------------------------------------------------------
 django-storages[boto3]==1.13.2          # Custom storage backends for Django
+
+# Other
+# ------------------------------------------------------------------------------
+python-decouple==3.8                     # Strict separation of config from code.
