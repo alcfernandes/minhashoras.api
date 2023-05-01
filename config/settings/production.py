@@ -12,3 +12,8 @@ ALLOWED_HOSTS = env.list(
 CSRF_TRUSTED_ORIGINS = env.list(
     'DJANGO_CSRF_TRUSTED_ORIGINS', default=['https://minhashoras-api.fly.dev']
 )
+
+# Cross-origin requests config
+CORS_ORIGIN_WHITELIST = [
+    'https://minhashoras-app-weld.vercel.app',
+]

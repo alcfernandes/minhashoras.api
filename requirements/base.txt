@@ -11,6 +11,7 @@ markdown==3.3.7                         # Markdown support for Python (for the b
 django-filter==23.1                     # A reusable Django application for allowing users to filter querysets dynamically
 drf-spectacular==0.26.1                 # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
 djangorestframework-simplejwt==5.2.2    # JSON Web Token authentication for Django REST framework
+django-cors-headers==3.14.0             # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
 
 # Data Auditing
 # ------------------------------------------------------------------------------
