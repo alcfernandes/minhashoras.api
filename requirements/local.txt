@@ -18,3 +18,6 @@ isort==5.12.0                       # Sorts imports.
 
 # Automation
 taskipy==1.10.4                     # Run tasks from your package.json.
+
+# Django
+django-debug-toolbar==4.0.0          # Django debug toolbar.
