@@ -21,3 +21,5 @@ taskipy==1.10.4                     # Run tasks from your package.json.
 
 # Django
 django-debug-toolbar==4.0.0          # Django debug toolbar.
+django-extensions==3.2.1             # Django extensions.
+ipython==8.13.2                     # Interactive Python shell. Used by Django extensions shell_plus.
