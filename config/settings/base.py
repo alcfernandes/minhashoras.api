@@ -3,6 +3,8 @@ from datetime import timedelta
 import environ
 from decouple import config
 
+from minhashoras_apps import __api_version__ as api_version
+
 ROOT_DIR = (
     environ.Path(__file__) - 3
 )  # (minhashoras-api/config/settings/base.py - 3 = minhashoras-api/)
@@ -192,8 +194,9 @@ CORS_ALLOW_CREDENTIALS = True
 SPECTACULAR_SETTINGS = {
     'TITLE': 'MinhasHoras API',
     'DESCRIPTION': 'Time tracking application',
-    'VERSION': '0.1.0',
+    'VERSION': api_version,
     'SERVE_INCLUDE_SCHEMA': False,
+    'SCHEMA_PATH_PREFIX': r'/api/',
 }
 
 # AUDITLOG SETTINGS
