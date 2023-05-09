@@ -6,6 +6,9 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
+from django.utils import timezone
+
+from minhashoras_apps.core.models import AbstractBaseModel
 
 
 class UserManager(BaseUserManager):
@@ -27,7 +30,7 @@ class UserManager(BaseUserManager):
         return self.get(email=email)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
@@ -42,3 +45,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def archive(self, *args, **kwargs):
+        self.archived_at = timezone.now()
+        self.is_active = False
+        self.save()
