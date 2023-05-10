@@ -1,5 +1,5 @@
-from minhashoras_apps.core.admin import ArchivableAdmin
+from minhashoras_apps.core.admin import BaseAdmin
 
 
-class UserAdmin(ArchivableAdmin):
+class UserAdmin(BaseAdmin):
     list_display = ['email', 'name', 'is_staff', 'is_active']
