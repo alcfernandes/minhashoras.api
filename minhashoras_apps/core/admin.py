@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext as _
 
 
 class ArchivableAdmin(admin.ModelAdmin):
@@ -8,4 +9,4 @@ class ArchivableAdmin(admin.ModelAdmin):
         for obj in queryset:
             obj.archive()
 
-    archive_objects.short_description = 'Arquivar objetos selecionados'
+    archive_objects.short_description = _('Archive selected objects')

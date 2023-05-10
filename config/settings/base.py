@@ -86,10 +86,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # INTERNATIONALIZATION SETTINGS
 # ------------------------------------------------------------------------------
-LANGUAGE_CODE = 'pt-br'
+LANGUAGE_CODE = config('LANGUAGE_CODE', default='pt-br')
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
+USE_L10N = True
 USE_TZ = True
+LOCALE_PATHS = [ROOT_DIR.path('locale')]
 
 # STATIC FILES AND MEDIA SETTINGS
 # ------------------------------------------------------------------------------
