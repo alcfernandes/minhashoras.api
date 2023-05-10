@@ -14,6 +14,7 @@ class AbstractBaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
     archived_at = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
 
     objects = models.Manager()
     active_objects = ActiveObjectsManager()
@@ -31,4 +32,5 @@ class AbstractBaseModel(models.Model):
 
     def archive(self):
         self.archived_at = timezone.now()
+        self.is_active = False
         self.save()
