@@ -4,7 +4,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.db import models
-from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from minhashoras_apps.core.models import AbstractBaseModel
 
@@ -29,10 +29,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
-    email = models.EmailField(unique=True)
-    name = models.CharField(max_length=50)
+    email = models.EmailField(unique=True, verbose_name=_('email'))
+    name = models.CharField(max_length=50, verbose_name=_('name'))
 
-    is_staff = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False, verbose_name=_('is staff?'))
 
     account = models.ForeignKey(
         'Account',
@@ -40,6 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
         null=True,
         blank=True,
         related_name='users',
+        verbose_name=_('account'),
     )
 
     objects = UserManager()
@@ -53,3 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
 
     def __str__(self):
         return self.email
+
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')

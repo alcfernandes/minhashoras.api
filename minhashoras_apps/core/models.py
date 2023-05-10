@@ -2,6 +2,7 @@ import uuid as uuid
 
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
 class ActiveObjectsManager(models.Manager):
@@ -11,10 +12,16 @@ class ActiveObjectsManager(models.Manager):
 
 class AbstractBaseModel(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
-    archived_at = models.DateTimeField(null=True, blank=True)
-    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True, editable=False, verbose_name=_('created at')
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, editable=False, verbose_name=_('updated at')
+    )
+    archived_at = models.DateTimeField(
+        null=True, blank=True, verbose_name=_('archived at')
+    )
+    is_active = models.BooleanField(default=True, verbose_name=_('is active?'))
 
     objects = models.Manager()
     active_objects = ActiveObjectsManager()

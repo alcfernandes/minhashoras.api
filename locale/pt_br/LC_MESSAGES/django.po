@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-09 20:54-0300\n"
+"POT-Creation-Date: 2023-05-10 19:48-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: minhashoras_apps/core/admin.py:12
+
+#: minhashoras_apps/accounts/models/account.py:12
+msgid "owner"
+msgstr "proprietário"
+
+#: minhashoras_apps/accounts/models/account.py:19
+#: minhashoras_apps/accounts/models/user.py:43
+msgid "account"
+msgstr "conta"
+
+#: minhashoras_apps/accounts/models/account.py:20
+msgid "accounts"
+msgstr "contas"
+
+#: minhashoras_apps/accounts/models/user.py:32
+msgid "email"
+msgstr "email"
+
+#: minhashoras_apps/accounts/models/user.py:33
+msgid "name"
+msgstr "nome"
+
+#: minhashoras_apps/accounts/models/user.py:35
+msgid "is staff?"
+msgstr "é da equipe?"
+
+#: minhashoras_apps/accounts/models/user.py:59
+msgid "user"
+msgstr "usuário"
+
+#: minhashoras_apps/accounts/models/user.py:60
+msgid "users"
+msgstr "usuários"
+
+#: minhashoras_apps/core/admin.py:13
 msgid "Archive selected objects"
 msgstr "Arquivar objetos selecionados"
+
+#: minhashoras_apps/core/models.py:16
+msgid "created at"
+msgstr "criado em"
+
+#: minhashoras_apps/core/models.py:19
+msgid "updated at"
+msgstr "atualizado em"
+
+#: minhashoras_apps/core/models.py:22
+msgid "archived at"
+msgstr "arquivado em"
+
+#: minhashoras_apps/core/models.py:24
+msgid "is active?"
+msgstr "está ativo?"
