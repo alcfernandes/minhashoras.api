@@ -31,13 +31,26 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=50)
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+
+    account = models.ForeignKey(
+        'Account',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='users',
+    )
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
+
+    @property
+    def is_owner(self):
+        return hasattr(self, 'owned_account')
 
     def __str__(self):
         return self.email
