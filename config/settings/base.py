@@ -32,7 +32,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'auditlog',
     'storages',
+    'minhashoras_apps.core.apps.CoreConfig',
     'minhashoras_apps.accounts.apps.AccountsConfig',
+    'minhashoras_apps.projects.apps.ProjectsConfig',
 ]
 
 # MIDDLEWARE AND URL CONFIGURATION
