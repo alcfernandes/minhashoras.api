@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-12 21:28-0300\n"
+"POT-Creation-Date: 2023-05-13 09:46-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Alessandro Cunha Fernandes <alcfernandes@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,7 @@ msgstr "proprietário"
 #: minhashoras_apps/accounts/models/account.py:19
 #: minhashoras_apps/accounts/models/user.py:43
 #: minhashoras_apps/projects/models/client.py:14
+#: minhashoras_apps/projects/models/project.py:13
 msgid "account"
 msgstr "conta"
 
@@ -40,6 +41,7 @@ msgstr "email"
 
 #: minhashoras_apps/accounts/models/user.py:33
 #: minhashoras_apps/projects/models/client.py:19
+#: minhashoras_apps/projects/models/project.py:18
 msgid "name"
 msgstr "nome"
 
@@ -80,6 +82,7 @@ msgid "is active?"
 msgstr "está ativo?"
 
 #: minhashoras_apps/projects/apps.py:8
+#: minhashoras_apps/projects/models/project.py:32
 msgid "projects"
 msgstr "projetos"
 
@@ -98,3 +101,17 @@ msgstr "cliente"
 #: minhashoras_apps/projects/models/client.py:41
 msgid "clients"
 msgstr "clientes"
+
+#: minhashoras_apps/projects/models/project.py:23
+msgid "description"
+msgstr "descrição"
+
+#: minhashoras_apps/projects/models/project.py:24
+msgid "Description of the project"
+msgstr "Descrição do projeto"
+
+#: minhashoras_apps/projects/models/project.py:31
+#, fuzzy
+#| msgid "projects"
+msgid "project"
+msgstr "projeto"
