@@ -13,6 +13,13 @@ class Project(AbstractBaseModel):
         verbose_name=_('account'),
     )
 
+    client = models.ForeignKey(
+        'Client',
+        on_delete=models.CASCADE,
+        related_name='projects',
+        verbose_name=_('client'),
+    )
+
     name = models.CharField(
         max_length=100,
         verbose_name=_('name'),
