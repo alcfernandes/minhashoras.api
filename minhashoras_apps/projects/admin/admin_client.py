@@ -8,6 +8,11 @@ class ClientAdmin(BaseAdmin):
     ]
     search_fields = [
         'name',
-        'account__owner__email',
+        'uuid',
+        'account__name',
         'account__id',
+        'account__uuid',
+    ]
+    list_filter = [
+        'account',
     ]

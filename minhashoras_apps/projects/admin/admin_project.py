@@ -6,8 +6,13 @@ class ProjectAdmin(BaseAdmin):
     raw_id_fields = ['account', 'client']
     search_fields = [
         'name',
+        'uuid',
         'client__name',
-        'account__owner__email',
+        'client__uuid',
+        'account__name',
         'account__id',
-        'client__id',
+        'account__uuid',
+    ]
+    list_filter = [
+        'account',
     ]

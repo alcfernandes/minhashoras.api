@@ -43,14 +43,12 @@ class User(AbstractBaseUser, PermissionsMixin, AbstractBaseModel):
         verbose_name=_('account'),
     )
 
+    is_owner = models.BooleanField(default=False, verbose_name=_('is owner?'))
+
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
-
-    @property
-    def is_owner(self):
-        return hasattr(self, 'owned_account')
 
     def __str__(self):
         return self.email
