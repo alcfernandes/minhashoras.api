@@ -1,5 +1,6 @@
-from rest_framework import viewsets
 from rest_framework_simplejwt.authentication import JWTAuthentication
+
+from minhashoras_apps.core.views import ArchivableModelViewSet
 
 from ..models import Client
 from ..serializers import (
@@ -9,7 +10,7 @@ from ..serializers import (
 )
 
 
-class ClientsViewSet(viewsets.ModelViewSet):
+class ClientsViewSet(ArchivableModelViewSet):
     authentication_classes = [JWTAuthentication]
     serializer_class = ClientSerializer
 
