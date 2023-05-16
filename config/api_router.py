@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.urls import include, path
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -15,7 +14,7 @@ def api_version(request):
 
 app_name = 'api'
 urlpatterns = [
-    path('accounts/', include(accounts_urls)),
-    path('projects/', include(projects_urls)),
+    path('', include(accounts_urls)),
+    path('', include(projects_urls)),
     path('version', api_version),
 ]
