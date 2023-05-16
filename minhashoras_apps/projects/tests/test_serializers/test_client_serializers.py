@@ -1,17 +1,41 @@
 import pytest
 
-from ...serializers import ClientSerializer
+from ...serializers import ClientListSerializer, ClientRetrieveSerializer
 
 
 @pytest.mark.django_db
-def test_client_serializer(client):
-
+def test_it_should_be_possible_to_use_client_list_serializer(client):
     # Serializa o objeto client
-    serializer = ClientSerializer(client)
+    serializer = ClientListSerializer(client)
 
-    # Verifica se os dados serializados correspondem ao objeto original
-    assert serializer.data['id'] == client.id
-    assert serializer.data['account'] == client.account.uuid
-    assert serializer.data['name'] == client.name
-    assert serializer.data['email'] == client.email
-    assert serializer.data['notes'] == client.notes
+    # Verifica se os campos retornados são os esperados
+    expected_fields = {
+        'id',
+        'name',
+        'email',
+        'is_active',
+        'uuid',
+    }
+    data = serializer.data
+    assert set(data.keys()) == expected_fields
+
+
+@pytest.mark.django_db
+def test_it_should_be_possible_to_use_client_retrieve_serializer(client):
+    # Serializa o objeto client
+    serializer = ClientRetrieveSerializer(client)
+
+    # Verifica se os campos retornados são os esperados
+    expected_fields = {
+        'id',
+        'name',
+        'email',
+        'notes',
+        'is_active',
+        'created_at',
+        'updated_at',
+        'archived_at',
+        'uuid',
+    }
+    data = serializer.data
+    assert set(data.keys()) == expected_fields

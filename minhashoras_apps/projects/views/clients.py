@@ -6,13 +6,13 @@ from ..models import Client
 from ..serializers import (
     ClientCreateUpdateSerializer,
     ClientListSerializer,
-    ClientSerializer,
+    ClientRetrieveSerializer,
 )
 
 
 class ClientsViewSet(ArchivableModelViewSet):
     authentication_classes = [JWTAuthentication]
-    serializer_class = ClientSerializer
+    serializer_class = ClientRetrieveSerializer
 
     def get_queryset(self):
         """
@@ -28,7 +28,7 @@ class ClientsViewSet(ArchivableModelViewSet):
         elif self.action in ['create', 'update', 'partial_update']:
             return ClientCreateUpdateSerializer
         else:
-            return ClientSerializer
+            return ClientRetrieveSerializer
 
     def perform_create(self, serializer):
         serializer.save(account=self.request.user.account)
