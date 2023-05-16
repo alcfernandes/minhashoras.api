@@ -17,6 +17,8 @@ class ClientListSerializer(ClientSerializer):
 
 
 class ClientCreateUpdateSerializer(serializers.ModelSerializer):
+    account = serializers.SlugRelatedField(slug_field='uuid', read_only=True)
+
     class Meta:
         model = Client
         fields = '__all__'
