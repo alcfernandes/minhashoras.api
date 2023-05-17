@@ -1,9 +1,35 @@
 from rest_framework import serializers
 
-from minhashoras_apps.accounts.models import User
+from ..models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserRestrictUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['email', 'name']
+        fields = [
+            'name',
+        ]
+
+
+class UserRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'email',
+            'name',
+            'is_active',
+            'created_at',
+            'updated_at',
+            'archived_at',
+            'uuid',
+        ]
+        read_only_fields = (
+            'id',
+            'is_active',
+            'created_at',
+            'updated_at',
+            'archived_at',
+            'uuid',
+            'email',
+        )
