@@ -91,10 +91,60 @@ def test_it_should_not_be_possible_to_update_a_client_of_another_account(
 
 
 @pytest.mark.django_db
-def test_it_should_be_possible_to_archive_a_client(user, client):
+def test_it_should_be_possible_to_delete_a_client(user, client):
     api_client = APIClient()
     api_client.force_authenticate(user=user)
 
     response = api_client.delete(f'{API_CLIENTS_URL}{client.id}/')
     assert response.status_code == 204
-    assert Client.objects.get(id=client.id).is_active is False
+    assert not Client.objects.filter(id=client.id).exists()
+
+
+@pytest.mark.django_db
+def test_it_should_be_possible_to_archive_a_client(user, client):
+    api_client = APIClient()
+    api_client.force_authenticate(user=user)
+
+    response = api_client.post(f'{API_CLIENTS_URL}{client.id}/archive/')
+    assert response.status_code == 200
+    assert response.data['is_active'] is False
+
+
+@pytest.mark.django_db
+def test_it_should_be_possible_to_unarchive_a_client(client_factory, user):
+    client_archived = client_factory(is_active=False, account=user.account)
+
+    api_client = APIClient()
+    api_client.force_authenticate(user=user)
+
+    response = api_client.post(
+        f'{API_CLIENTS_URL}{client_archived.id}/unarchive/'
+    )
+    assert response.status_code == 200
+    assert response.data['is_active'] is True
+
+
+@pytest.mark.django_db
+def test_it_should_return_an_error_if_try_archive_an_already_archived_client(
+    client_factory, user
+):
+    client_archived = client_factory(is_active=False, account=user.account)
+
+    api_client = APIClient()
+    api_client.force_authenticate(user=user)
+
+    response = api_client.post(
+        f'{API_CLIENTS_URL}{client_archived.id}/archive/'
+    )
+    assert response.status_code == 400
+
+
+@pytest.mark.django_db
+def test_it_should_return_an_error_if_try_unarchive_an_already_active_client(
+    user, client
+):
+    api_client = APIClient()
+    api_client.force_authenticate(user=user)
+
+    response = api_client.post(f'{API_CLIENTS_URL}{client.id}/unarchive/')
+    assert response.status_code == 400

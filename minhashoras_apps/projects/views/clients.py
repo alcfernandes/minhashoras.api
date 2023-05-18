@@ -1,6 +1,10 @@
+from drf_spectacular.utils import OpenApiParameter, extend_schema
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from minhashoras_apps.core.views import ArchivableModelViewSet
+from minhashoras_apps.core.views import (
+    ArchivableModelViewSet,
+    UserAccountFilterMixin,
+)
 
 from ..models import Client
 from ..serializers import (
@@ -10,17 +14,18 @@ from ..serializers import (
 )
 
 
-class ClientsViewSet(ArchivableModelViewSet):
+class ClientsViewSet(UserAccountFilterMixin, ArchivableModelViewSet):
+    """
+    Clients of the logged user's account.
+    """
+
     authentication_classes = [JWTAuthentication]
     serializer_class = ClientRetrieveSerializer
+    queryset = Client.objects.none()
 
     def get_queryset(self):
-        """
-        Este view deve retornar uma lista de todos os clients ativos
-        para a account atualmente autenticada.
-        """
-        user = self.request.user
-        return Client.active_objects.filter(account__uuid=user.account.uuid)
+        queryset = super().get_queryset()
+        return queryset.order_by('name')
 
     def get_serializer_class(self):
         if self.action == 'list':
@@ -32,3 +37,17 @@ class ClientsViewSet(ArchivableModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(account=self.request.user.account)
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(
+                name='show-archived',
+                description='Flag to include archived records.',
+                required=False,
+                type=bool,
+                location=OpenApiParameter.QUERY,
+            )
+        ],
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)

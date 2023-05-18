@@ -41,3 +41,8 @@ class AbstractBaseModel(models.Model):
         self.archived_at = timezone.now()
         self.is_active = False
         self.save()
+
+    def unarchive(self):
+        self.archived_at = None
+        self.is_active = True
+        self.save()
