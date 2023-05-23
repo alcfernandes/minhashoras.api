@@ -1,25 +1,16 @@
 -r ./base.txt
 
 # Database
-psycopg2-binary==2.9.5
-
-# Testing
-pytest==7.2.2                       # Python testing tool.
-pytest-django==4.5.2                # Pytest plugin for Django.
-pytest-cov==4.0.0                   # Pytest plugin for coverage.
-pytest-factoryboy==2.5.1            # Pytest plugin for factoryboy.
-pytest-sugar==0.9.6                 # Changes the default look and feel of pytest. Shows a progress bar.
-Faker==18.3.2                       # Generates fake data.
-freezegun==1.2.2                    # Mocks datetime.now().
+psycopg2-binary==2.9.6
 
 # Linting
 blue==0.9.1                         # Python linter.
 isort==5.12.0                       # Sorts imports.
 
 # Automation
-taskipy==1.10.4                     # Run tasks from your package.json.
+taskipy==1.11.0                     # Run tasks from your package.json.
 
 # Django
-django-debug-toolbar==4.0.0          # Django debug toolbar.
+django-debug-toolbar==4.1.0          # Django debug toolbar.
 django-extensions==3.2.1             # Django extensions.
 ipython==8.13.2                     # Interactive Python shell. Used by Django extensions shell_plus.

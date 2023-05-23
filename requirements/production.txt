@@ -3,7 +3,7 @@
 -r ./base.txt
 
 # Database
-psycopg2-binary==2.9.5  # Fly deploy error if using "psycopg2==2.9.5 --no-binary psycopg2"
+psycopg2-binary==2.9.6  # Fly deploy error if using "psycopg2==2.9.5 --no-binary psycopg2"
 
 # Production web server
 gunicorn==20.1.0

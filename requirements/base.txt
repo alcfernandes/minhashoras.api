@@ -1,18 +1,18 @@
 # Django
 # ------------------------------------------------------------------------------
-django==4.1.7
+django==4.2.1
 django-environ==0.10.0                  # configure your Django application with environment variables
-django-admin-interface==0.24.2          # a modern responsive flat admin interface customizable by the admin itself
+django-admin-interface==0.26.0          # a modern responsive flat admin interface customizable by the admin itself
 django-ckeditor==6.5.1                  # Django admin CKEditor integration.
 
 # Django Rest Framework dependencies
 # ------------------------------------------------------------------------------
 djangorestframework==3.14.0             # Web APIs for Django
-markdown==3.3.7                         # Markdown support for Python (for the browsable API.)
-django-filter==23.1                     # A reusable Django application for allowing users to filter querysets dynamically
-drf-spectacular==0.26.1                 # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
+markdown==3.4.3                         # Markdown support for Python (for the browsable API.)
+django-filter==23.2                     # A reusable Django application for allowing users to filter querysets dynamically
+drf-spectacular==0.26.2                 # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
 djangorestframework-simplejwt==5.2.2    # JSON Web Token authentication for Django REST framework
-django-cors-headers==3.14.0             # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
+django-cors-headers==4.0.0             # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
 
 # Data Auditing
 # ------------------------------------------------------------------------------
@@ -25,3 +25,13 @@ django-storages[boto3]==1.13.2          # Custom storage backends for Django
 # Other
 # ------------------------------------------------------------------------------
 python-decouple==3.8                     # Strict separation of config from code.
+
+# Testing  (used also for fake data generation)
+# ------------------------------------------------------------------------------
+pytest==7.3.1                       # Python testing tool.
+pytest-django==4.5.2                # Pytest plugin for Django.
+pytest-cov==4.0.0                   # Pytest plugin for coverage.
+pytest-factoryboy==2.5.1            # Pytest plugin for factoryboy.
+pytest-sugar==0.9.7                 # Changes the default look and feel of pytest. Shows a progress bar.
+Faker==18.9.0                       # Generates fake data.
+freezegun==1.2.2                    # Mocks datetime.now().
