@@ -13,4 +13,5 @@ class ClientFactory(DjangoModelFactory):
     account = factory.SubFactory(AccountFactory)
     name = factory.Faker('name')
     email = factory.Faker('email')
+    quick_info = factory.Faker('text')
     notes = factory.Faker('text')

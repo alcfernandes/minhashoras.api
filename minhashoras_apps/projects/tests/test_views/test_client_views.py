@@ -45,6 +45,7 @@ def test_it_should_be_possible_to_create_a_client_on_user_account(user):
     new_client_data = {
         'name': 'New Client',
         'email': 'new_client@test.com',
+        'quick_info': 'Some quick info about the new client',
         'notes': 'Some notes about the new client',
     }
     response = api_client.post(API_CLIENTS_URL, data=new_client_data)

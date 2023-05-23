@@ -27,6 +27,13 @@ class Client(AbstractBaseModel):
         null=True,
     )
 
+    quick_info = models.TextField(
+        blank=True,
+        max_length=150,
+        verbose_name=_('quick info'),
+        help_text=_('Quick info about the client.'),
+    )
+
     notes = RichTextField(
         blank=True,
         verbose_name=_('notes'),

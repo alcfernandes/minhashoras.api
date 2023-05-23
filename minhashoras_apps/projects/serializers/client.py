@@ -6,7 +6,7 @@ from ..models import Client
 class ClientListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Client
-        fields = ['id', 'name', 'email', 'is_active', 'uuid']
+        fields = ['id', 'name', 'email', 'quick_info', 'is_active', 'uuid']
         read_only_fields = ('id', 'is_active', 'uuid')
 
 
@@ -17,6 +17,7 @@ class ClientRetrieveSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'email',
+            'quick_info',
             'notes',
             'is_active',
             'created_at',

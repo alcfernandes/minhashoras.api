@@ -13,6 +13,7 @@ def test_it_should_be_possible_to_use_client_list_serializer(client):
         'id',
         'name',
         'email',
+        'quick_info',
         'is_active',
         'uuid',
     }
@@ -30,6 +31,7 @@ def test_it_should_be_possible_to_use_client_retrieve_serializer(client):
         'id',
         'name',
         'email',
+        'quick_info',
         'notes',
         'is_active',
         'created_at',
