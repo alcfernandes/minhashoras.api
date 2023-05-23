@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 09:46-0300\n"
+"POT-Creation-Date: 2023-05-23 18:38-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Alessandro Cunha Fernandes <alcfernandes@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,43 +19,68 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: minhashoras_apps/accounts/apps.py:8
-#: minhashoras_apps/accounts/models/account.py:20
+#: minhashoras_apps/accounts/models/account.py:45
 msgid "accounts"
 msgstr "contas"
 
-#: minhashoras_apps/accounts/models/account.py:12
-msgid "owner"
-msgstr "proprietário"
+#: minhashoras_apps/accounts/models/account.py:11
+#: minhashoras_apps/accounts/models/user.py:37
+#: minhashoras_apps/projects/models/client.py:19
+#: minhashoras_apps/projects/models/project.py:26
+msgid "name"
+msgstr "nome"
 
-#: minhashoras_apps/accounts/models/account.py:19
-#: minhashoras_apps/accounts/models/user.py:43
+#: minhashoras_apps/accounts/models/account.py:24
+msgid "The new owner must belong to the same account."
+msgstr "O novo proprietário deve pertencer à mesma conta."
+
+#: minhashoras_apps/accounts/models/account.py:36
+#, python-brace-format
+msgid "The account already has an owner: {current_owner.email}"
+msgstr "A conta já tem um proprietário: {current_owner.email}"
+
+#: minhashoras_apps/accounts/models/account.py:44
+#: minhashoras_apps/accounts/models/user.py:47
 #: minhashoras_apps/projects/models/client.py:14
-#: minhashoras_apps/projects/models/project.py:13
+#: minhashoras_apps/projects/models/project.py:14
 msgid "account"
 msgstr "conta"
 
-#: minhashoras_apps/accounts/models/user.py:32
+#: minhashoras_apps/accounts/models/user.py:15
+msgid "Users must have an email address"
+msgstr "Usuários devem ter um endereço de email"
+
+#: minhashoras_apps/accounts/models/user.py:23
+#, python-brace-format
+msgid "Error creating user: {e}"
+msgstr "Erro ao criar usuário: {e}"
+
+#: minhashoras_apps/accounts/models/user.py:36
 #: minhashoras_apps/projects/models/client.py:25
 msgid "email"
 msgstr "email"
 
-#: minhashoras_apps/accounts/models/user.py:33
-#: minhashoras_apps/projects/models/client.py:19
-#: minhashoras_apps/projects/models/project.py:18
-msgid "name"
-msgstr "nome"
-
-#: minhashoras_apps/accounts/models/user.py:35
+#: minhashoras_apps/accounts/models/user.py:39
 msgid "is staff?"
 msgstr "é da equipe?"
 
-#: minhashoras_apps/accounts/models/user.py:59
+#: minhashoras_apps/accounts/models/user.py:50
+#, fuzzy
+#| msgid "owner"
+msgid "is owner?"
+msgstr "proprietário"
+
+#: minhashoras_apps/accounts/models/user.py:61
 msgid "user"
 msgstr "usuário"
 
-#: minhashoras_apps/accounts/models/user.py:60
+#: minhashoras_apps/accounts/models/user.py:62
 msgid "users"
 msgstr "usuários"
+
+#: minhashoras_apps/accounts/serializers/token_obtain_pair.py:11
+msgid "The user does not belong to any account."
+msgstr "O usuário não pertence a nenhuma conta."
 
 #: minhashoras_apps/core/admin.py:14
 msgid "Archive selected objects"
@@ -81,36 +106,59 @@ msgstr "arquivado em"
 msgid "is active?"
 msgstr "está ativo?"
 
+#: minhashoras_apps/core/views.py:48
+msgid "This resource is already archived."
+msgstr "Este recurso já está arquivado."
+
+#: minhashoras_apps/core/views.py:54
+msgid "This resource is not archived."
+msgstr "Este recurso não está arquivado."
+
 #: minhashoras_apps/projects/apps.py:8
-#: minhashoras_apps/projects/models/project.py:32
+#: minhashoras_apps/projects/models/project.py:46
 msgid "projects"
 msgstr "projetos"
 
-#: minhashoras_apps/projects/models/client.py:32
+#: minhashoras_apps/projects/models/client.py:33
+msgid "quick info"
+msgstr "informações rápidas"
+
+#: minhashoras_apps/projects/models/client.py:34
+#, fuzzy
+#| msgid "Notes about the client."
+msgid "Quick info about the client."
+msgstr "Anotações sobre o cliente."
+
+#: minhashoras_apps/projects/models/client.py:39
 msgid "notes"
 msgstr "Anotações"
 
-#: minhashoras_apps/projects/models/client.py:33
+#: minhashoras_apps/projects/models/client.py:40
 msgid "Notes about the client."
 msgstr "Anotações sobre o cliente."
 
-#: minhashoras_apps/projects/models/client.py:40
+#: minhashoras_apps/projects/models/client.py:47
+#: minhashoras_apps/projects/models/project.py:21
 msgid "client"
 msgstr "cliente"
 
-#: minhashoras_apps/projects/models/client.py:41
+#: minhashoras_apps/projects/models/client.py:48
 msgid "clients"
 msgstr "clientes"
 
-#: minhashoras_apps/projects/models/project.py:23
+#: minhashoras_apps/projects/models/project.py:31
 msgid "description"
 msgstr "descrição"
 
-#: minhashoras_apps/projects/models/project.py:24
+#: minhashoras_apps/projects/models/project.py:32
 msgid "Description of the project"
 msgstr "Descrição do projeto"
 
-#: minhashoras_apps/projects/models/project.py:31
+#: minhashoras_apps/projects/models/project.py:41
+msgid "The client must belong to the same account as the project."
+msgstr "O cliente deve pertencer à mesma conta do projeto."
+
+#: minhashoras_apps/projects/models/project.py:45
 #, fuzzy
 #| msgid "projects"
 msgid "project"

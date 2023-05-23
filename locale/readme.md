@@ -2,7 +2,7 @@
 ## Generate messages files
 To generate de Django messages files, run:
 ```
- django-admin makemessages -l [locale]
+ django-admin makemessages -l pt_BR
 ```
 
 ## Compile messages files
