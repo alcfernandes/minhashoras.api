@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'auditlog.middleware.AuditlogMiddleware',
 ]
 ROOT_URLCONF = 'config.urls'
@@ -89,6 +90,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # INTERNATIONALIZATION SETTINGS
 # ------------------------------------------------------------------------------
+LANGUAGES = (
+    ('en', 'English'),
+    ('pt-br', 'Português'),
+)
 LANGUAGE_CODE = config('LANGUAGE_CODE', default='pt-br')
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True

@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import (
@@ -11,7 +12,6 @@ from rest_framework_simplejwt.views import TokenRefreshView
 from minhashoras_apps.accounts.views import CustomTokenObtainPairView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     # API base url
     path('api/', include('config.api_router')),
     # drf-spectacular
@@ -37,7 +37,10 @@ urlpatterns = [
         TokenRefreshView.as_view(),
         name='token_refresh',
     ),
+    # i18n
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
+urlpatterns += i18n_patterns(path('admin/', admin.site.urls))
 
 if settings.DEBUG and 'debug_toolbar' in settings.INSTALLED_APPS:
     import debug_toolbar
