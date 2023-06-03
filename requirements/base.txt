@@ -12,11 +12,11 @@ markdown==3.4.3                         # Markdown support for Python (for the b
 django-filter==23.2                     # A reusable Django application for allowing users to filter querysets dynamically
 drf-spectacular==0.26.2                 # Auto-generate OpenAPI 3.0 schemas from Django Rest Framework code
 djangorestframework-simplejwt==5.2.2    # JSON Web Token authentication for Django REST framework
-django-cors-headers==4.0.0             # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
+django-cors-headers==4.0.0              # For handling the server headers required for Cross-Origin Resource Sharing (CORS)
 
 # Data Auditing
 # ------------------------------------------------------------------------------
-django-auditlog==2.2.2                  # Audit log for Django
+django-auditlog==2.3.0                  # Audit log for Django
 
 # Storage
 # ------------------------------------------------------------------------------
@@ -28,10 +28,10 @@ python-decouple==3.8                     # Strict separation of config from code
 
 # Testing  (used also for fake data generation)
 # ------------------------------------------------------------------------------
-pytest==7.3.1                       # Python testing tool.
-pytest-django==4.5.2                # Pytest plugin for Django.
-pytest-cov==4.0.0                   # Pytest plugin for coverage.
-pytest-factoryboy==2.5.1            # Pytest plugin for factoryboy.
-pytest-sugar==0.9.7                 # Changes the default look and feel of pytest. Shows a progress bar.
-Faker==18.9.0                       # Generates fake data.
-freezegun==1.2.2                    # Mocks datetime.now().
+pytest==7.3.1                           # Python testing tool.
+pytest-django==4.5.2                    # Pytest plugin for Django.
+pytest-cov==4.1.0                       # Pytest plugin for coverage.
+pytest-factoryboy==2.5.1                # Pytest plugin for factoryboy.
+pytest-sugar==0.9.7                     # Changes the default look and feel of pytest. Shows a progress bar.
+Faker==18.10.1                          # Generates fake data.
+freezegun==1.2.2                        # Mocks datetime.now().
