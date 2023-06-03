@@ -1,4 +1,5 @@
 from drf_spectacular.utils import OpenApiParameter, extend_schema
+from rest_framework import filters
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from minhashoras_apps.core.views import (
@@ -22,6 +23,9 @@ class ClientsViewSet(UserAccountFilterMixin, ArchivableModelViewSet):
     authentication_classes = [JWTAuthentication]
     serializer_class = ClientRetrieveSerializer
     queryset = Client.objects.none()
+
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name', 'quick_info']
 
     def get_queryset(self):
         queryset = super().get_queryset()
