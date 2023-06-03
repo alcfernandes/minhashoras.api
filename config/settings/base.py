@@ -186,6 +186,8 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ],
+    'DEFAULT_PAGINATION_CLASS': 'minhashoras_apps.core.custom_paginations.CustomPageNumberPagination',
+    'PAGE_SIZE': 100,
 }
 
 # SIMPLE JWT SETTINGS
